@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="calendar" class="com.diosoft.calendar.server.Calendar">
+
+    </bean>
+
+    <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
+        <property name="serviceName" value="Calendar"/>
+        <property name="service" ref="calendar"/>
+        <property name="serviceInterface" value="com.diosoft.calendar.server.ICalendar"/>
+        <property name="registryPort" value="1199"/>
+    </bean>
+
+    <context:annotation-config />
+    <context:component-scan base-package="com.diosoft.calendar"/>
+</beans>
