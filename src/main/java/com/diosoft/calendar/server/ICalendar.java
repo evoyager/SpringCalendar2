@@ -4,13 +4,19 @@ package com.diosoft.calendar.server;
  * Created by EVGENIY on 24.03.14.
  */
 import com.diosoft.calendar.server.pojo.Event;
-import java.util.UUID;
+import com.diosoft.calendar.server.pojo.Person;
 
-public interface ICalendar {
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.*;
 
-    void publish(UUID uuid, Event event);
+public interface ICalendar extends Remote {
 
-    Event remove(UUID uuid);
+    void publish(UUID uuid, Event event) throws RemoteException;
 
-    Event getEvent(UUID uuid);
+    Event remove(UUID uuid) throws RemoteException;
+
+    Event getEvent(UUID uuid) throws RemoteException;
+
+    public Map<UUID, Event> getStorage() throws RemoteException;
 }

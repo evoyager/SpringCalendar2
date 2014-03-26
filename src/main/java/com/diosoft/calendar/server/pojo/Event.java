@@ -116,7 +116,7 @@ public class Event implements Serializable {
         }
 
         public Builder setAllDay(boolean allDay){
-            if (allDay == true){
+            if (allDay){
                 int year = startDate.get(Calendar.YEAR);
                 int month = startDate.get(Calendar.MONTH);
                 int dayOfMonth = startDate.get(Calendar.DAY_OF_MONTH);

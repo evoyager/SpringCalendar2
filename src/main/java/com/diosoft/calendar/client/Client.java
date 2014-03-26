@@ -5,6 +5,7 @@ import com.diosoft.calendar.server.pojo.Person;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -18,7 +19,7 @@ public class Client {
 
     public static final Logger logger = Logger.getAnonymousLogger();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws RemoteException {
         ApplicationContext factory = new ClassPathXmlApplicationContext("client.xml");
         ClientCalendar cal = (ClientCalendar) factory.getBean("clientCalendar");
         List<Person> womens = new ArrayList<Person>();

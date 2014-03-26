@@ -2,9 +2,12 @@ package com.diosoft.calendar.server.adapter;
 
 import com.diosoft.calendar.server.pojo.Person;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Created by EVGENIY on 24.03.14.
  */
+@XmlRootElement
 public class PersonAdapter {
 
     private String firstName;

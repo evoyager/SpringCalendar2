@@ -5,6 +5,7 @@ import com.diosoft.calendar.server.pojo.Person;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.UUID;
  * Created by EVGENIY on 24.03.14.
  */
 public class Driver {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws RemoteException {
         ApplicationContext context = new ClassPathXmlApplicationContext("server.xml");
         ICalendar cal = (ICalendar) context.getBean("calendar");
         List<Person> womens = new ArrayList<Person>();

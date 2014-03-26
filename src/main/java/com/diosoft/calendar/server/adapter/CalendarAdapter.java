@@ -2,11 +2,13 @@ package com.diosoft.calendar.server.adapter;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
 /**
  * Created by EVGENIY on 24.03.14.
  */
+@XmlRootElement
 public class CalendarAdapter {
     @XmlElementWrapper(name = "events")
     @XmlElement(name = "event")
