@@ -4,12 +4,8 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="clientCalendar" class="com.diosoft.calendar.client.ClientCalendar">
-        <property name="calendar" ref="remoteCalendar"/>
-    </bean>
-
-    <bean id="remoteCalendar" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
-        <property name="serviceUrl" value="rmi://localhost:1199/Calendar"/>
-        <property name="serviceInterface" value="com.diosoft.calendar.server.ICalendar"/>
+    <bean id="calendarService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceUrl" value="rmi://localhost:1199/CalendarService"/>
+        <property name="serviceInterface" value="com.diosoft.calendar.server.service.ICalendarService"/>
     </bean>
 </beans>

@@ -4,14 +4,16 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="calendar" class="com.diosoft.calendar.server.Calendar">
+    <bean id="calendar" class="com.diosoft.calendar.server.Calendar"/>
 
+    <bean id="calendarService" class="com.diosoft.calendar.server.service.CalendarService">
+        <constructor-arg ref="calendar"/>
     </bean>
 
     <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
-        <property name="serviceName" value="Calendar"/>
-        <property name="service" ref="calendar"/>
-        <property name="serviceInterface" value="com.diosoft.calendar.server.ICalendar"/>
+        <property name="serviceName" value="CalendarService"/>
+        <property name="service" ref="calendarService"/>
+        <property name="serviceInterface" value="com.diosoft.calendar.server.service.ICalendarService"/>
         <property name="registryPort" value="1199"/>
     </bean>
 

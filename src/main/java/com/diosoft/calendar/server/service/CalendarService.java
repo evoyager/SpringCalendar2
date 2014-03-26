@@ -114,18 +114,4 @@ public class CalendarService implements ICalendarService {
             eventCounter++;
         }
     }
-
-    public void persistEvent(Event event) {
-        JAXBContext context = null;
-
-        EventAdapter eventAdapter = new EventAdapter(event);
-        try {
-            context = JAXBContext.newInstance(EventAdapter.class);
-            Marshaller m = context.createMarshaller();
-            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-            m.marshal(eventAdapter, new File("./"+event.getName() +". xml"));
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
-    }
 }

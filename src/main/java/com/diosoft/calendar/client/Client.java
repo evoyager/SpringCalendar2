@@ -2,6 +2,8 @@ package com.diosoft.calendar.client;
 
 import com.diosoft.calendar.server.pojo.Event;
 import com.diosoft.calendar.server.pojo.Person;
+import com.diosoft.calendar.server.service.CalendarService;
+import com.diosoft.calendar.server.service.ICalendarService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -21,7 +23,7 @@ public class Client {
 
     public static void main(String[] args) throws RemoteException {
         ApplicationContext factory = new ClassPathXmlApplicationContext("client.xml");
-        ClientCalendar cal = (ClientCalendar) factory.getBean("clientCalendar");
+        ICalendarService service = (ICalendarService) factory.getBean("calendarService");
         List<Person> womens = new ArrayList<Person>();
 
         Person mother = new Person.Builder()
@@ -42,8 +44,8 @@ public class Client {
                 .build();
 
         UUID uuid = UUID.fromString("9736f89d-e9f8-4c14-9e60-354b2320a40b");
-        cal.getCalendar().publish(uuid, WomensDay);
+        service.addEvent(uuid, WomensDay);
 
-        logger.info("Created event: " + cal.getCalendar().getEvent(uuid));
+        logger.info("Created event: " + service.readEvent(uuid));
     }
 }

@@ -8,7 +8,6 @@ import java.util.List;
 /**
  * Created by EVGENIY on 24.03.14.
  */
-@XmlRootElement
 public class CalendarAdapter {
     @XmlElementWrapper(name = "events")
     @XmlElement(name = "event")

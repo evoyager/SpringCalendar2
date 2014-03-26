@@ -26,7 +26,4 @@ public interface ICalendarService extends Remote {
 
    List<GregorianCalendar> checkAvailability(Person... persons) throws RemoteException;
 
-   void printEventSet(Set<Event> eventSet) throws RemoteException;
-
-    void persistEvent(Event event) throws RemoteException;
 }
