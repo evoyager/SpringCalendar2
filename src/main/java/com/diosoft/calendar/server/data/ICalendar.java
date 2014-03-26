@@ -1,4 +1,4 @@
-package com.diosoft.calendar.server;
+package com.diosoft.calendar.server.data;
 
 /**
  * Created by EVGENIY on 24.03.14.

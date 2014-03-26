@@ -1,8 +1,7 @@
-package com.diosoft.calendar.server;
+package com.diosoft.calendar.server.data;
 
 import com.diosoft.calendar.server.adapter.EventAdapter;
 import com.diosoft.calendar.server.pojo.Event;
-import com.diosoft.calendar.server.pojo.Person;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;

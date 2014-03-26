@@ -1,6 +1,6 @@
 package com.diosoft.calendar.server;
 
-import com.diosoft.calendar.server.Calendar;
+import com.diosoft.calendar.server.data.ICalendar;
 import com.diosoft.calendar.server.pojo.Event;
 import com.diosoft.calendar.server.pojo.Person;
 import com.diosoft.calendar.server.service.CalendarService;

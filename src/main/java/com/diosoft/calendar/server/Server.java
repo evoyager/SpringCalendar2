@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 /**
  * Created by EVGENIY on 24.03.14.
  */
-public class CalendarServer {
+public class Server {
 
     public static final Logger logger = Logger.getAnonymousLogger();
 

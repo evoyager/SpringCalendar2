@@ -5,7 +5,6 @@ import com.diosoft.calendar.server.pojo.Person;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 import static junit.framework.Assert.assertEquals;
@@ -15,7 +14,7 @@ import static junit.framework.Assert.assertEquals;
  */
 public class CalendarTest {
 
-    Calendar dataStore = new Calendar();
+    com.diosoft.calendar.server.data.Calendar dataStore = new com.diosoft.calendar.server.data.Calendar();
     Set<Event> eventSet;
     Event myBirthday;
     ArrayList<Person> listOfAttenders2;

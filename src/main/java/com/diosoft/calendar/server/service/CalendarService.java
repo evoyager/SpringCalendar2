@@ -1,15 +1,9 @@
 package com.diosoft.calendar.server.service;
 
-import com.diosoft.calendar.server.ICalendar;
-import com.diosoft.calendar.server.adapter.EventAdapter;
+import com.diosoft.calendar.server.data.ICalendar;
 import com.diosoft.calendar.server.pojo.Event;
 import com.diosoft.calendar.server.pojo.Person;
-import com.diosoft.calendar.server.Calendar;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import java.io.File;
 import java.rmi.RemoteException;
 import java.util.*;
 
