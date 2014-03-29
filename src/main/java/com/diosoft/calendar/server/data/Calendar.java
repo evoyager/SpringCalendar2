@@ -6,13 +6,17 @@ import com.diosoft.calendar.server.pojo.Event;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.*;
 
 /**
  * Created by EVGENIY on 24.03.14.
  */
 public class Calendar implements ICalendar {
+//    private static final String EVENT_XML =
     private Map<UUID, Event> storage = new HashMap<UUID, Event>();
 
     public Map<UUID, Event> getStorage() {
@@ -39,6 +43,15 @@ public class Calendar implements ICalendar {
     @Override
     public Event getEvent(UUID uuid) {
         Event event = storage.get(uuid);
+        try {
+            JAXBContext context = JAXBContext.newInstance(EventAdapter.class);
+            Unmarshaller um = context.createUnmarshaller();
+            String EVENT_XML = "./"+event.getName() + ".xml";
+            EventAdapter ea = (EventAdapter) um.unmarshal(new FileReader(EVENT_XML));
+            System.out.println(ea);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return event;
     }
 
@@ -50,7 +63,12 @@ public class Calendar implements ICalendar {
             context = JAXBContext.newInstance(EventAdapter.class);
             Marshaller m = context.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-            m.marshal(eventAdapter, new File("./"+event.getName() +". xml"));
+
+            File file = new File("./"+event.getName() +".xml");
+
+//            if (file.exists())
+//                file.delete();
+            m.marshal(eventAdapter, file);
         } catch (JAXBException e) {
             e.printStackTrace();
         }

@@ -70,7 +70,7 @@ public class EventAdapter implements Serializable {
                 ", name: " + name + ", description: " + description + "\nattenders: " + attenders;
     }
 
-    @XmlElement(name = "person")
+    @XmlElement(name = "name")
 
     public String getName() {
         return name;

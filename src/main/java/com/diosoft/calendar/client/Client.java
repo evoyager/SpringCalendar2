@@ -37,7 +37,7 @@ public class Client {
         womens.add(mother);
 
         Event WomensDay = new Event.Builder()
-                .setName("WomensDay")
+                .setName("WomensDayy")
                 .setDescription("Congratulate all the women I know the holiday of spring and beauty")
                 .setStartDate(new GregorianCalendar(2014, 2, 8, 9, 00, 00))
                 .setAllDay(true)
@@ -48,13 +48,13 @@ public class Client {
         service.addEvent(uuid, WomensDay);
         logger.info("Created event: " + service.readEvent(uuid));
 
-        Event event = service.deleteEvent(uuid);
-        logger.info("Deleted event: " + event);
-        Event event2 = service.deleteEvent(uuid);
-        logger.info("Deleted event: " + event2);
-
+//        Event event = service.deleteEvent(uuid);
+//        logger.info("Deleted event: " + event);
+//        Event event2 = service.deleteEvent(uuid);
+//        logger.info("Deleted event: " + event2);
+//
         service.addEvent(uuid, WomensDay);
-        service.editEvent(uuid, "name", "WOMENSDAY");
+        service.editEvent(uuid, "name", "WOMENSDAYY");
         logger.info("Edited event: " + service.readEvent(uuid));
 
         GregorianCalendar date = new GregorianCalendar(2014, 2, 8, 9, 00, 00);
