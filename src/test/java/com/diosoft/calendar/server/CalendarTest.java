@@ -23,42 +23,42 @@ public class CalendarTest {
     public void setUp(){
         Person vasiliy = new Person.Builder()
                 .setAge(30)
-                .setEmail("vtegza@dio-soft.com")
+                .setEmail("vtegza@rambler.ru")
                 .setFirstName("Vasiliy")
                 .setSecondName("Tegza")
                 .build();
 
         Person evgeniy = new Person.Builder()
                 .setAge(27)
-                .setEmail("evgeniygusar@gmail.com")
+                .setEmail("evgeniygusar@rambler.ru")
                 .setFirstName("Evgeniy")
                 .setSecondName("Gusar")
                 .build();
 
         Person ivan = new Person.Builder()
                 .setAge(22)
-                .setEmail("shapoval.ivan.ivanovich@gmail.com")
+                .setEmail("shapoval.ivan.ivanovich@rambler.ru")
                 .setFirstName("Ivan")
                 .setSecondName("Shapoval")
                 .build();
 
         Person igor = new Person.Builder()
                 .setAge(27)
-                .setEmail("sytniuk@gmail.com\"")
+                .setEmail("sytniuk@rambler.ru")
                 .setFirstName("Igor")
                 .setSecondName("Sytnuk")
                 .build();
 
         Person nikolay = new Person.Builder()
                 .setAge(40)
-                .setEmail("nchigir@dio-soft.com")
+                .setEmail("nchigir@rambler.ru")
                 .setFirstName("Nikolay")
                 .setSecondName("Chigir")
                 .build();
 
         Person kostia = new Person.Builder()
                 .setAge(30)
-                .setEmail("kshraiber@dio-soft.com")
+                .setEmail("kshraiber@rambler.ru")
                 .setFirstName("Kostia")
                 .setSecondName("Shraiber")
                 .build();
@@ -86,7 +86,7 @@ public class CalendarTest {
 
         Person i = new Person.Builder()
                 .setAge(27)
-                .setEmail("evgeniygusar@gmail.com")
+                .setEmail("evgeniygusar@rambler.ru")
                 .setFirstName("Evgeniy")
                 .setSecondName("Gusar")
                 .build();
@@ -121,14 +121,14 @@ public class CalendarTest {
 
         Person mother = new Person.Builder()
                 .setAge(54)
-                .setEmail("nataliagusar@gmail.com")
+                .setEmail("nataliagusar@rambler.ru")
                 .setFirstName("Natalia")
                 .setSecondName("Gusar")
                 .build();
 
         Person father = new Person.Builder()
                 .setAge(55)
-                .setEmail("valeriygusar@gmail.com")
+                .setEmail("valeriygusar@rambler.ru")
                 .setFirstName("Valeriy")
                 .setSecondName("Gusar")
                 .build();
