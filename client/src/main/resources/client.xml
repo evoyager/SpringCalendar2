@@ -6,6 +6,6 @@
 
     <bean id="calendarService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
         <property name="serviceUrl" value="rmi://localhost:1199/CalendarService"/>
-        <property name="serviceInterface" value="com.diosoft.calendar.server.service.ICalendarService"/>
+        <property name="serviceInterface" value="com.diosoft.calendar.service.ICalendarService"/>
     </bean>
 </beans>

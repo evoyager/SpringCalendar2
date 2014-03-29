@@ -1,7 +1,7 @@
-package com.diosoft.calendar.server.adapter;
+package com.diosoft.calendar.adapter;
 
-import com.diosoft.calendar.server.pojo.Event;
-import com.diosoft.calendar.server.pojo.Person;
+import com.diosoft.calendar.pojo.Event;
+import com.diosoft.calendar.pojo.Person;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;

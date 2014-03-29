@@ -1,9 +1,11 @@
-package com.diosoft.calendar.server.service;
+package com.diosoft.calendar.service;
 
-import com.diosoft.calendar.server.data.ICalendar;
-import com.diosoft.calendar.server.pojo.Event;
-import com.diosoft.calendar.server.pojo.Person;
+import com.diosoft.calendar.data.ICalendar;
+import com.diosoft.calendar.pojo.Event;
+import com.diosoft.calendar.pojo.Person;
 
+import javax.xml.bind.JAXBException;
+import java.io.FileNotFoundException;
 import java.rmi.RemoteException;
 import java.util.*;
 
@@ -30,11 +32,11 @@ public class CalendarService implements ICalendarService {
     }
 
     @Override
-    public Event readEvent(UUID uuid) throws RemoteException {
+    public Event readEvent(UUID uuid) throws RemoteException, JAXBException, FileNotFoundException {
         return calendar.getEvent(uuid);
     }
 
-    public Event editEvent(UUID uuid, String key, Object value) throws RemoteException {
+    public Event editEvent(UUID uuid, String key, Object value) throws RemoteException, JAXBException, FileNotFoundException {
         Event event = readEvent(uuid);
         if(key.equals("startTime"))
             event = new Event.Builder()

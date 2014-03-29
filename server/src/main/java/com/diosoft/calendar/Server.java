@@ -1,4 +1,4 @@
-package com.diosoft.calendar.server;
+package com.diosoft.calendar;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

@@ -1,4 +1,4 @@
-package com.diosoft.calendar.server.pojo;
+package com.diosoft.calendar.pojo;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;

@@ -1,13 +1,14 @@
-package com.diosoft.calendar.server.service;
+package com.diosoft.calendar.service;
 
-import com.diosoft.calendar.server.pojo.Event;
-import com.diosoft.calendar.server.pojo.Person;
+import com.diosoft.calendar.pojo.Event;
+import com.diosoft.calendar.pojo.Person;
 
+import javax.xml.bind.JAXBException;
+import java.io.FileNotFoundException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -18,9 +19,9 @@ public interface ICalendarService extends Remote {
 
    Event deleteEvent(UUID uuid) throws RemoteException;
 
-   Event readEvent(UUID uuid) throws RemoteException;
+   Event readEvent(UUID uuid) throws RemoteException, JAXBException, FileNotFoundException;
 
-   Event editEvent(UUID uuid, String key, Object value) throws RemoteException;
+   Event editEvent(UUID uuid, String key, Object value) throws RemoteException, JAXBException, FileNotFoundException;
 
    boolean isPersonAvailable(Person person, GregorianCalendar desireDate) throws RemoteException;
 
