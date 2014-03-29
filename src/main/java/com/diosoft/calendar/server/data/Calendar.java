@@ -47,10 +47,9 @@ public class Calendar implements ICalendar {
             JAXBContext context = JAXBContext.newInstance(EventAdapter.class);
             Unmarshaller um = context.createUnmarshaller();
             String EVENT_XML = "./"+event.getName() + ".xml";
-            Event unmEvent = (Event)um.unmarshal(new FileReader(EVENT_XML));
-//            EventAdapter ea = (EventAdapter) um.unmarshal(new FileReader(EVENT_XML));
-//            System.out.println(ea);
-            System.out.println(unmEvent);
+
+            EventAdapter ea = (EventAdapter) um.unmarshal(new FileReader(EVENT_XML));
+            System.out.println(ea);
         } catch (Exception e) {
             e.printStackTrace();
         }
