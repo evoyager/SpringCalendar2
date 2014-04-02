@@ -45,16 +45,33 @@ public class Calendar implements ICalendar {
     }
 
     @Override
-    public Event getEvent(UUID uuid) throws JAXBException, FileNotFoundException {
+    public Event getEvent(UUID uuid){
         Event event = storage.get(uuid);
+        return event;
+    }
+
+    public void addEventsFromXml() throws JAXBException, FileNotFoundException {
+        File f = null;
+        File[] paths;
+        f = new File("./");
+        paths = f.listFiles();
+
         JAXBContext context = JAXBContext.newInstance(EventAdapter.class);
         Unmarshaller um = context.createUnmarshaller();
-        String EVENT_XML = "./"+event.getName() + ".xml";
 
-        EventAdapter ea = (EventAdapter) um.unmarshal(new FileReader(EVENT_XML));
-//            System.out.println(ea);
-        logger.info("Readed event: " + ea);
+        for(File file : paths){
+            if (file.getName().contains(".xml")){
+                String EVENT_XML = "./"+file.getName();
+                EventAdapter ea = (EventAdapter) um.unmarshal(new FileReader(EVENT_XML));
+                Event event = eventAdapterToEvent(ea);
+                UUID uuid = UUID.randomUUID();
+                storage.put(uuid, event);
+            }
+        }
 
+    }
+
+    public Event eventAdapterToEvent(EventAdapter ea){
         List<PersonAdapter> attendersPA = ea.getAttenders();
         List<Person> attendersP = new ArrayList<Person>();
         for(PersonAdapter pa : attendersPA)
@@ -66,17 +83,15 @@ public class Calendar implements ICalendar {
                     .build()
             );
 
-        Event marshalledEvent = new Event.Builder()
+        Event event = new Event.Builder()
                 .setName(ea.getName())
                 .setDescription(ea.getDescription())
                 .setStartDate(ea.getStartDate())
                 .setAllDay(ea.isAllDay())
                 .setAttenders(attendersP)
                 .build();
-        return marshalledEvent;
+        return event;
     }
-
-
 
     private void persistEvent(Event event) {
         JAXBContext context = null;

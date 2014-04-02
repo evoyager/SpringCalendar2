@@ -103,6 +103,19 @@ public class CalendarService implements ICalendarService {
         return checkAvailabilityList;
     }
 
+    @Override
+    public void loadEventsFromXml() throws RemoteException, JAXBException, FileNotFoundException {
+        calendar.addEventsFromXml();
+    }
+
+    @Override
+    public List<Event> getAllEvents() throws RemoteException {
+        List<Event> eventList = new ArrayList<Event>();
+        for(Event event : calendar.getStorage().values())
+            eventList.add(event);
+        return eventList;
+    }
+
     public void printEventSet(Set<Event> eventSet){
         int eventCounter = 1;
         for(Event event : eventSet){

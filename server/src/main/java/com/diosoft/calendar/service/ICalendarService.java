@@ -27,4 +27,9 @@ public interface ICalendarService extends Remote {
 
    List<GregorianCalendar> checkAvailability(Person... persons) throws RemoteException;
 
+   void loadEventsFromXml() throws RemoteException, JAXBException, FileNotFoundException;
+
+   List<Event> getAllEvents() throws RemoteException;
+
+
 }

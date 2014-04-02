@@ -26,6 +26,12 @@ public class Client {
     public static void main(String[] args) throws RemoteException, JAXBException, FileNotFoundException {
         ApplicationContext factory = new ClassPathXmlApplicationContext("client.xml");
         ICalendarService service = (ICalendarService) factory.getBean("calendarService");
+        service.loadEventsFromXml();
+        logger.info("Loaded events from XML: ");
+
+        for(Event event : service.getAllEvents())
+            logger.info(event.toString());
+        
         List<Person> womens = new ArrayList<Person>();
 
         Person mother = new Person.Builder()
