@@ -12,6 +12,7 @@ import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.rmi.RemoteException;
 import java.util.*;
 import java.util.logging.Logger;
 
@@ -20,7 +21,7 @@ import java.util.logging.Logger;
  */
 public class Calendar implements ICalendar {
     public static final Logger logger = Logger.getAnonymousLogger();
-//    private static final String EVENT_XML =
+
     private Map<UUID, Event> storage = new HashMap<UUID, Event>();
 
     public Map<UUID, Event> getStorage() {
@@ -32,10 +33,17 @@ public class Calendar implements ICalendar {
     }
 
     @Override
+    public void clearStorage() throws RemoteException {
+        storage = new HashMap<UUID, Event>();
+    }
+
+    @Override
     public void publish(UUID uuid, Event event) {
         storage.put(uuid, event);
-//        persistEvent(event);
+        persistEvent(event);
     }
+
+
 
     @Override
     public Event remove(UUID uuid) {
@@ -50,47 +58,11 @@ public class Calendar implements ICalendar {
         return event;
     }
 
-    public void addEventsFromXml() throws JAXBException, FileNotFoundException {
-        File f = null;
-        File[] paths;
-        f = new File("./");
-        paths = f.listFiles();
+    public void addEventsFromXml() throws JAXBException, FileNotFoundException, InterruptedException {
 
-        JAXBContext context = JAXBContext.newInstance(EventAdapter.class);
-        Unmarshaller um = context.createUnmarshaller();
 
-        for(File file : paths){
-            if (file.getName().contains(".xml")){
-                String EVENT_XML = "./"+file.getName();
-                EventAdapter ea = (EventAdapter) um.unmarshal(new FileReader(EVENT_XML));
-                Event event = eventAdapterToEvent(ea);
-                UUID uuid = UUID.randomUUID();
-                storage.put(uuid, event);
-            }
-        }
-
-    }
-
-    public Event eventAdapterToEvent(EventAdapter ea){
-        List<PersonAdapter> attendersPA = ea.getAttenders();
-        List<Person> attendersP = new ArrayList<Person>();
-        for(PersonAdapter pa : attendersPA)
-            attendersP.add(new Person.Builder()
-                    .setAge(pa.getAge())
-                    .setEmail(pa.getEmail())
-                    .setFirstName(pa.getFirstName())
-                    .setSecondName(pa.getSecondName())
-                    .build()
-            );
-
-        Event event = new Event.Builder()
-                .setName(ea.getName())
-                .setDescription(ea.getDescription())
-                .setStartDate(ea.getStartDate())
-                .setAllDay(ea.isAllDay())
-                .setAttenders(attendersP)
-                .build();
-        return event;
+//        for(Thread t : threads)
+//            t.join();
     }
 
     private void persistEvent(Event event) {
@@ -104,12 +76,9 @@ public class Calendar implements ICalendar {
 
             File file = new File("./"+event.getName() +".xml");
 
-//            if (file.exists())
-//                file.delete();
             m.marshal(eventAdapter, file);
         } catch (JAXBException e) {
             e.printStackTrace();
         }
     }
-
 }

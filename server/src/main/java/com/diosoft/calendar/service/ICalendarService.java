@@ -19,6 +19,8 @@ public interface ICalendarService extends Remote {
 
    Event deleteEvent(UUID uuid) throws RemoteException;
 
+   void toClearStorage() throws RemoteException;
+
    Event readEvent(UUID uuid) throws RemoteException, JAXBException, FileNotFoundException;
 
    Event editEvent(UUID uuid, String key, Object value) throws RemoteException, JAXBException, FileNotFoundException;
@@ -27,7 +29,7 @@ public interface ICalendarService extends Remote {
 
    List<GregorianCalendar> checkAvailability(Person... persons) throws RemoteException;
 
-   void loadEventsFromXml() throws RemoteException, JAXBException, FileNotFoundException;
+   void loadEventsFromXml() throws RemoteException, JAXBException, FileNotFoundException, InterruptedException;
 
    List<Event> getAllEvents() throws RemoteException;
 

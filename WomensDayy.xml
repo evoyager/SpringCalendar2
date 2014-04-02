@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<eventAdapter>
+    <allDay>true</allDay>
+    <attenders>
+        <age>54</age>
+        <email>natali.gusar@mail.ru</email>
+        <firstName>Natalia</firstName>
+        <secondName>Gusar</secondName>
+    </attenders>
+    <description>Congratulate all the women I know the holiday of spring and beauty</description>
+    <endDate>2014-03-09T00:00:00+02:00</endDate>
+    <name>WOMENSDAYY</name>
+    <startDate>2014-03-08T09:00:00+02:00</startDate>
+</eventAdapter>

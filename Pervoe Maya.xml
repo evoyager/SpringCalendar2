@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<eventAdapter>
+    <allDay>true</allDay>
+    <attenders>
+        <age>28</age>
+        <email>astarov@rambler.ru</email>
+        <firstName>Анатолий</firstName>
+        <secondName>Старовойтов</secondName>
+    </attenders>
+    <description>Pervoe Maya</description>
+    <endDate>2014-05-02T00:00:00+02:00</endDate>
+    <name>Pervoe Maya</name>
+    <startDate>2014-05-01T12:00:00+02:00</startDate>
+</eventAdapter>

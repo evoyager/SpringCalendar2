@@ -13,6 +13,10 @@ import java.util.*;
 
 public interface ICalendar extends Remote {
 
+    void setStorage(Map<UUID, Event> storage) throws RemoteException;
+
+    void clearStorage() throws RemoteException;
+
     void publish(UUID uuid, Event event) throws RemoteException;
 
     Event remove(UUID uuid) throws RemoteException;
@@ -21,5 +25,5 @@ public interface ICalendar extends Remote {
 
     public Map<UUID, Event> getStorage() throws RemoteException;
 
-    void addEventsFromXml() throws RemoteException, JAXBException, FileNotFoundException;
+    void addEventsFromXml() throws RemoteException, JAXBException, FileNotFoundException, InterruptedException;
 }

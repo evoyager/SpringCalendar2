@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<eventAdapter>
+    <allDay>true</allDay>
+    <attenders>
+        <age>28</age>
+        <email>astarov@rambler.ru</email>
+        <firstName>Анатолий</firstName>
+        <secondName>Старовойтов</secondName>
+    </attenders>
+    <attenders>
+        <age>27</age>
+        <email>ekorn@mail.ru</email>
+        <firstName>Евгений</firstName>
+        <secondName>Корницкий</secondName>
+    </attenders>
+    <description>Mary Christmas and happy New Year!</description>
+    <endDate>2015-01-01T00:00:00+02:00</endDate>
+    <name>NewYear</name>
+    <startDate>2014-12-31T23:55:00+02:00</startDate>
+</eventAdapter>

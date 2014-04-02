@@ -23,15 +23,23 @@ public class Client {
 
     public static final Logger logger = Logger.getAnonymousLogger();
 
-    public static void main(String[] args) throws RemoteException, JAXBException, FileNotFoundException {
+    public static void main(String[] args) throws RemoteException, JAXBException, FileNotFoundException, InterruptedException {
         ApplicationContext factory = new ClassPathXmlApplicationContext("client.xml");
         ICalendarService service = (ICalendarService) factory.getBean("calendarService");
+
         service.loadEventsFromXml();
+
         logger.info("Loaded events from XML: ");
 
-        for(Event event : service.getAllEvents())
-            logger.info(event.toString());
-        
+        Thread.sleep(3000);
+
+        int eventCounter = 0;
+
+        for(Event event : service.getAllEvents()) {
+            eventCounter++;
+            logger.info("Parsed event №" + eventCounter + ": " + event.toString());
+        }
+
         List<Person> womens = new ArrayList<Person>();
 
         Person mother = new Person.Builder()

@@ -1,10 +1,12 @@
 package com.diosoft.calendar.service;
 
 import com.diosoft.calendar.data.ICalendar;
+import com.diosoft.calendar.data.LoadEvent;
 import com.diosoft.calendar.pojo.Event;
 import com.diosoft.calendar.pojo.Person;
 
 import javax.xml.bind.JAXBException;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.rmi.RemoteException;
 import java.util.*;
@@ -29,6 +31,11 @@ public class CalendarService implements ICalendarService {
     public Event deleteEvent(UUID uuid) throws RemoteException {
         Event event = calendar.remove(uuid);
         return event;
+    }
+
+    @Override
+    public void toClearStorage() throws RemoteException {
+        calendar.clearStorage();
     }
 
     @Override
@@ -104,8 +111,22 @@ public class CalendarService implements ICalendarService {
     }
 
     @Override
-    public void loadEventsFromXml() throws RemoteException, JAXBException, FileNotFoundException {
-        calendar.addEventsFromXml();
+    public void loadEventsFromXml() throws RemoteException, JAXBException, FileNotFoundException, InterruptedException {
+
+        toClearStorage();
+        File f = null;
+        File[] paths;
+        f = new File("./");
+        paths = f.listFiles();
+
+        for(File file : paths){
+            if (file.getName().contains(".xml")){
+                Runnable runnable  = new LoadEvent(file, calendar);
+                Thread thread = new Thread(runnable);
+                thread.start();
+            }
+        }
+
     }
 
     @Override
