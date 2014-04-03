@@ -28,9 +28,14 @@ public class CalendarService implements ICalendarService {
     }
 
     @Override
-    public Event deleteEvent(UUID uuid) throws RemoteException {
-        Event event = calendar.remove(uuid);
-        return event;
+    public void deleteEvent(UUID uuid) throws RemoteException {
+//        Event event = calendar.remove(uuid);
+//        calendar.remove(uuid);
+//        return event;
+
+        Runnable runnable  = new DeleteEvent(calendar, uuid);
+        Thread thread = new Thread(runnable);
+        thread.start();
     }
 
     @Override

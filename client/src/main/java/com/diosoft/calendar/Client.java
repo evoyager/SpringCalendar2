@@ -63,10 +63,11 @@ public class Client {
         service.addEvent(uuid, WomensDay);
         logger.info("Created event: " + service.readEvent(uuid));
 
-        Event event = service.deleteEvent(uuid);
-        logger.info("Deleted event: " + event);
-        Event event2 = service.deleteEvent(uuid);
-        logger.info("Deleted event: " + event2);
+//        Event event = service.deleteEvent(uuid);
+
+        logger.info("Deleted event: " + service.readEvent(uuid));
+        service.deleteEvent(uuid);
+        logger.info("After delete: " + service.readEvent(uuid));
 
         service.addEvent(uuid, WomensDay);
         service.editEvent(uuid, "name", "WOMENSDAYY");

@@ -19,11 +19,7 @@ public interface ICalendar extends Remote {
 
     void publish(UUID uuid, Event event) throws RemoteException;
 
-    Event remove(UUID uuid) throws RemoteException;
-
     Event getEvent(UUID uuid) throws RemoteException, JAXBException, FileNotFoundException;
 
     public Map<UUID, Event> getStorage() throws RemoteException;
-
-    void addEventsFromXml() throws RemoteException, JAXBException, FileNotFoundException, InterruptedException;
 }

@@ -4,6 +4,8 @@ import com.diosoft.calendar.adapter.EventAdapter;
 import com.diosoft.calendar.adapter.PersonAdapter;
 import com.diosoft.calendar.pojo.Event;
 import com.diosoft.calendar.pojo.Person;
+import com.diosoft.calendar.service.DeleteEvent;
+import com.diosoft.calendar.service.SerializeEvent;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -43,42 +45,16 @@ public class Calendar implements ICalendar {
         persistEvent(event);
     }
 
-
-
-    @Override
-    public Event remove(UUID uuid) {
-        Event event = storage.get(uuid);
-        storage.remove(uuid);
-        return event;
-    }
-
     @Override
     public Event getEvent(UUID uuid){
         Event event = storage.get(uuid);
         return event;
     }
 
-    public void addEventsFromXml() throws JAXBException, FileNotFoundException, InterruptedException {
-
-
-//        for(Thread t : threads)
-//            t.join();
-    }
-
     private void persistEvent(Event event) {
-        JAXBContext context = null;
 
-        EventAdapter eventAdapter = new EventAdapter(event);
-        try {
-            context = JAXBContext.newInstance(EventAdapter.class);
-            Marshaller m = context.createMarshaller();
-            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-
-            File file = new File("./"+event.getName() +".xml");
-
-            m.marshal(eventAdapter, file);
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
+        Runnable runnable  = new SerializeEvent(event);
+        Thread thread = new Thread(runnable);
+        thread.start();
     }
 }

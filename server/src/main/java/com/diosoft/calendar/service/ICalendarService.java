@@ -17,7 +17,7 @@ import java.util.UUID;
 public interface ICalendarService extends Remote {
    void addEvent(UUID uuid, Event event) throws RemoteException;
 
-   Event deleteEvent(UUID uuid) throws RemoteException;
+   void deleteEvent(UUID uuid) throws RemoteException;
 
    void toClearStorage() throws RemoteException;
 
