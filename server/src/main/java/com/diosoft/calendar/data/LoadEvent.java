@@ -18,6 +18,7 @@ import java.util.*;
  * Created by EVGENIY on 02.04.14.
  */
 public class LoadEvent implements Runnable {
+    //local code review (vtegza): should be private @ 04.05.14
     File file;
     ICalendar calendar;
 
@@ -35,7 +36,10 @@ public class LoadEvent implements Runnable {
         } catch (JAXBException e) {
             e.printStackTrace();
         }
+        //local code review (vtegza): why you need assert check here? do tests in separated places @ 04.05.14
+        //local code review (vtegza): asserts normally should not be used in source code @ 04.05.14
         assert context != null;
+        //local code review (vtegza): instead of null initialization do all work in try/catch - this um is oyu mandatory resource @ 04.05.14
         Unmarshaller um = null;
         try {
             um = context.createUnmarshaller();
@@ -48,13 +52,11 @@ public class LoadEvent implements Runnable {
         EventAdapter ea = null;
         try {
             ea = (EventAdapter) um.unmarshal(new FileReader(EVENT_XML));
-        } catch (JAXBException e) {
-            e.printStackTrace();
-          }
-          catch (FileNotFoundException e) {
+        } catch (JAXBException | FileNotFoundException e) {
             e.printStackTrace();
           }
         Event event = eventAdapterToEvent(ea);
+        //local code review (vtegza): inline uuid variable @ 04.05.14
         UUID uuid = UUID.randomUUID();
         Calendar cal = new Calendar();
 //        cal.storage.put(uuid, event);
@@ -63,6 +65,7 @@ public class LoadEvent implements Runnable {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+        //local code review (vtegza): try to use log4j instead of sout @ 04.05.14
         System.out.println(Thread.currentThread().getName());
         System.out.println(event);
     }

@@ -12,6 +12,7 @@ import java.io.File;
  * Created by EVGENIY on 03.04.14.
  */
 public class SerializeEvent implements Runnable {
+    //local code review (vtegza): private/public ? @ 04.05.14
     Event event;
     public SerializeEvent(Event event){
         this.event = event;
@@ -19,6 +20,7 @@ public class SerializeEvent implements Runnable {
 
     @Override
     public void run() {
+        //local code review (vtegza): move to try/catch block @ 04.05.14
         JAXBContext context = null;
 
         EventAdapter eventAdapter = new EventAdapter(event);

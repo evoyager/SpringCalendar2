@@ -50,6 +50,7 @@ public class CalendarService implements ICalendarService {
 
     public Event editEvent(UUID uuid, String key, Object value) throws RemoteException, JAXBException, FileNotFoundException {
         Event event = readEvent(uuid);
+        //local code review (vtegza): use switch on strings here @ 04.05.14
         if(key.equals("startTime"))
             event = new Event.Builder()
                     .setName(event.getName())
@@ -119,14 +120,16 @@ public class CalendarService implements ICalendarService {
     public void loadEventsFromXml() throws RemoteException, JAXBException, FileNotFoundException, InterruptedException {
 
         toClearStorage();
+        //local code review (vtegza): inline @ 04.05.14
         File f = null;
         File[] paths;
         f = new File("./");
         paths = f.listFiles();
-
+        //local code review (vtegza): try to use nio2 instead of old IO @ 04.05.14
         for(File file : paths){
             if (file.getName().contains(".xml")){
                 Runnable runnable  = new LoadEvent(file, calendar);
+                //local code review (vtegza): take a look at java Executors @ 04.05.14
                 Thread thread = new Thread(runnable);
                 thread.start();
             }
